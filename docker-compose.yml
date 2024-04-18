@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  skistationproject:
+    image: maissabenabdallah/skistationproject:latest
+    ports:
+      - "9090:9090"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
