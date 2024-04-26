@@ -23,26 +23,17 @@ pipeline {
         }
 
         stage('Build') {
-            agent {
-                docker {
-                    image 'maven:3.9.6'
-                }
-            }
             steps {
-                // Run Maven on a Unix agent.
-                sh 'mvn clean install -DskipTests'
+                withMaven(maven: 'mvn') {
+                  sh 'mvn clean install -DskipTests'
+                }
             }
 
         }
         
         stage('sonarqube'){
-            agent { 
-                docker { 
-                    image 'maven:3.9.6' 
-                    args ' --network devops'
-                } 
-            }
             steps{
+              withMaven(maven: 'mvn') {
                 sh '''
                     mvn clean verify sonar:sonar\
                         -Dsonar.projectKey=skistation \
@@ -52,6 +43,7 @@ pipeline {
                         -DskipTests
                 '''
                 }
+            }
             
         }
 
