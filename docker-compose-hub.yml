@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   skistationproject:
-    image: localhost:8085/skiapp:1.0
+    image: maissabenabdallah/skistationproject:latest
     ports:
-      - "9099:9090"
+      - "9090:9090"
     depends_on:
       - mysql
 
