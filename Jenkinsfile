@@ -68,7 +68,8 @@ pipeline {
         stage('Start Application') {
             steps {
                 sh '''
-                docker compose up 
+                
+                sudo docker compose up -d
                 '''
             }
         }
