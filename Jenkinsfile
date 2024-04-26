@@ -38,7 +38,7 @@ pipeline {
                     mvn clean verify sonar:sonar\
                         -Dsonar.projectKey=skistation \
                         -Dsonar.projectName=skistation\
-                        -Dsonar.host.url=http://172.18.0.4:9000 \
+                        -Dsonar.host.url=http://localhost:9000 \
                         -Dsonar.token=sqp_ed21170bc9ca103c945f9d3c39fb59faed8010af \
                         -DskipTests
                 '''
